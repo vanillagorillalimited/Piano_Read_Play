@@ -1,0 +1,39 @@
+Transcribe piano sheet music into the compact text notation described below, so a learning app can show it and play it back. Copy what is printed, bar by bar, exactly.
+
+Reply with ONLY one JSON object:
+{"title": string or null, "composer": string or null, "key": "F", "time": "3/4", "tempo": number or null, "staves": "grand" or "treble" or "bass", "bars": [{"n": 1, "rh": "...", "lh": "..."}, ...], "uncertain": "a short note about anything you could not read clearly, or an empty string"}
+
+- "bars" has one entry for every bar, in order, none skipped. "n" is the bar number: use the printed bar numbers (usually at the start of each line) and count on from them; if none are printed, start at 1.
+- Two staves joined by a brace (the usual piano layout): staves "grand", and each bar has "rh" (upper staff) and "lh" (lower staff).
+- One staff only: staves "treble" or "bass", and each bar has "music" instead.
+- key: the key signature, named as its major key: C G D A E B F# C# (sharps) or F Bb Eb Ab Db Gb Cb (flats). Add m only when the piece is clearly minor, for example Dm.
+- time: as printed, for example "4/4", "3/4", "6/8". tempo: crotchet beats per minute if a number is printed, otherwise null.
+- If the images are not sheet music, or are too blurred to read, reply {"error": "a short reason"}.
+
+PITCH: WRITE WHAT IS PRINTED. THE APP APPLIES THE KEY SIGNATURE.
+Name each note by the line or space it sits on: a letter a to g, then the octave number. Middle C is c4. The octave number goes up at each C: b3 is just below c4, c5 is an octave above c4.
+Treble clef lines from the bottom: e4 g4 b4 d5 f5. Spaces: f4 a4 c5 e5. Above the staff: g5, then a5 on the first ledger line, b5, c6 on the second ledger line. Below: d4, then c4 on the first ledger line, b3, a3 on the second.
+Bass clef lines from the bottom: g2 b2 d3 f3 a3. Spaces: a2 c3 e3 g3. Above the staff: b3, then c4 on the first ledger line. Below: f2, then e2 on the first ledger line, d2, c2 on the second ledger line, b1, a1 on the third.
+Add an accidental ONLY when a sharp, flat or natural sign is printed directly in front of that note: # sharp, b flat, n natural, ## double sharp, bb double flat.
+Do NOT add the key signature's sharps or flats to notes, and do NOT repeat an accidental on later notes in the same bar. The app does both.
+For example, in a piece with one flat (F major), a note on the middle line of the treble staff is written b4, and the app plays B flat. If a natural sign is printed in front of it, write bn4. A note with a sharp sign printed in front, on the third space, is c#5.
+
+DURATION goes after a colon: w semibreve (4 beats), h minim (2), q crotchet (1), 8 quaver (1/2), 16 semiquaver (1/4), 32. Add . for a dotted note (half as long again), t for a triplet note (write t on every note of the triplet: c4:8t d4:8t e4:8t), and ~ after the duration to tie into the next note of the same pitch (d5:q~).
+A token without a duration repeats the previous duration: "c4:q d4 e4" is three crotchets.
+Chord: pitches in brackets with one duration, lowest first: (a4 d5 f5):q
+Rest: r with a duration: r:8 r:q r:h r:h. r:w
+Optional extras: dynamics in braces after the duration (c4:q{ff}), staccato ^st or accent ^ac (c4:q^st). Leave out fingering.
+Clef change partway through a staff: write clef=treble or clef=bass as its own token before the next note.
+
+BEATS MUST ADD UP.
+In every bar, the notes and rests of each staff add up exactly to the time signature: 4/4 = 4 crotchet beats, 3/4 = 3, 2/4 = 2, 6/8 = 3 (six quavers). Only a pickup first bar may be shorter.
+Check each staff of each bar before you write it. If it doesn't add up, look again: you have usually missed a dot, a rest, a beam (two beams = semiquavers) or a note. Never add a rest that isn't printed just to make a bar add up.
+
+TWO VOICES ON ONE STAFF (stems up and stems down with different rhythms): follow the voice with the melody (usually the upper one) for the rhythm, and put notes of the other voice into chords with it where they start at the same moment.
+When both voices move together in the same rhythm (octaves, chords), write them as chords.
+A bar with nothing on a staff gets a rest that fills it (r:w in 4/4, r:h. in 3/4, r:h in 2/4).
+Ignore lyrics, chord names above the music, pedal marks, fingering, page numbers, copyright text and repeat signs.
+
+Example (F major, 3/4, grand staff):
+{"title": null, "composer": null, "key": "F", "time": "3/4", "tempo": null, "staves": "grand", "bars": [{"n": 9, "rh": "(a4 d5 f5):q r:q e5:8 f5:8", "lh": "(d2 d3):q (d2 d3):8 (d2 d3):q (d2 d3):8"}, {"n": 10, "rh": "(f4 b4 d5):q c#5:q d5:q", "lh": "(b1 b2):h."}], "uncertain": ""}
+Here b4, b1 and b2 have no sign printed in front, so the app plays them as B flat from the key signature.

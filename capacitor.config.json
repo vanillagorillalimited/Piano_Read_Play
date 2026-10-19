@@ -1,0 +1,11 @@
+{
+  "appId": "com.cramberry.readplay",
+  "appName": "Read & Play",
+  "webDir": "www",
+  "backgroundColor": "#0F0E0D",
+  "ios": { "contentInset": "never", "backgroundColor": "#0F0E0D" },
+  "android": { "backgroundColor": "#0F0E0D" },
+  "plugins": {
+    "StatusBar": { "overlaysWebView": true, "style": "DARK" }
+  }
+}

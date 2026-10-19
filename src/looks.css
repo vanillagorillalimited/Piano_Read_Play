@@ -1,0 +1,64 @@
+/* ============================================================
+   Looks. :root (above) is Concert Grand; these override it.
+   ============================================================ */
+
+/* ---------- Concert Grand: lacquer, ivory and gold ---------- */
+:root[data-look="grand"] body {
+  background: radial-gradient(900px 500px at 50% -120px, #2A2520 0%, rgba(15,14,13,0) 70%), var(--bg);
+  background-attachment: fixed;
+}
+[data-look="grand"] .hero { background: linear-gradient(165deg, #1F1C19 0%, #0B0A09 100%); border-color: #3A332A; box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 18px 40px rgba(0,0,0,.45); }
+[data-look="grand"] .hero::after { content: ""; position: absolute; left: 20px; right: 20px; bottom: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+[data-look="grand"] .hero h1, [data-look="grand"] .lesson-head h1, [data-look="grand"] .display, [data-look="grand"] .onb h1 { font-weight: 600; letter-spacing: -.01em; }
+[data-look="grand"] .btn.primary { background: linear-gradient(180deg, #E0BE5C, #B48A28); border-color: #B48A28; box-shadow: 0 1px 0 rgba(255,255,255,.35) inset; }
+[data-look="grand"] .paper { background: linear-gradient(180deg, #F7F2E5, #EFE7D3); box-shadow: inset 0 0 0 1px var(--paper-edge); }
+[data-look="grand"] .eyebrow { color: #C7B27A; }
+[data-look="grand"] .bar i { background: linear-gradient(90deg, #8C6B1E, #E0BE5C); }
+[data-look="grand"] .status.done { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+[data-look="grand"] .nav { background: #0B0A09; border-top-color: #2E2924; }
+
+/* ---------- Minimal: soft paper white, charcoal type, nothing extra ---------- */
+:root[data-look="minimal"] {
+  --bg: #F4F2EE; --surface: #FBFAF7; --surface-2: #ECE9E3; --ink: #2E2C29; --muted: #7A766F; --line: #E2DED6;
+  --accent: #3A3835; --on-accent: #FBFAF7; --accent-2: #5C5852; --good: #3E7D4F; --bad: #B9483D;
+  --paper: #FCFBF8; --paper-edge: #E4E0D8; --score-ink: #2A2826; --staff-line: #9A958C; --hi: #3D6FC9; --ok: #3E7D4F; --nope: #B9483D; --early: #3D6FC9;
+  --key-white: #FCFBF8; --key-white-2: #EFECE6; --key-black: #2C2A27; --key-black-2: #4A4743; --key-hi: #3D6FC9;
+  --display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 14px; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 14px rgba(0,0,0,.05);
+  color-scheme: light;
+}
+[data-look="minimal"] body { background: var(--bg); }
+[data-look="minimal"] .topbar { background: rgba(244,242,238,.94); backdrop-filter: saturate(1.4) blur(8px); }
+[data-look="minimal"] .topbar .title, [data-look="minimal"] .hero h1, [data-look="minimal"] .lesson-head h1, [data-look="minimal"] .display, [data-look="minimal"] .onb h1,
+[data-look="minimal"] .section-head h2, [data-look="minimal"] .sheet-head h2, [data-look="minimal"] .tour-card h3, [data-look="minimal"] .about-piece > summary { font-weight: 700; letter-spacing: -.02em; }
+[data-look="minimal"] .hero { background: #EFECE6; border: 0; box-shadow: none; }
+[data-look="minimal"] .hero-staff { opacity: .18; }
+[data-look="minimal"] .eyebrow { color: var(--muted); }
+[data-look="minimal"] .card, [data-look="minimal"] .list, [data-look="minimal"] .lesson-list, [data-look="minimal"] .stat, [data-look="minimal"] .level-row,
+[data-look="minimal"] .link-card, [data-look="minimal"] .sym-card, [data-look="minimal"] .tbl-wrap { box-shadow: none; }
+[data-look="minimal"] .btn { box-shadow: none; }
+[data-look="minimal"] .btn.primary { background: #3A3835; border-color: #3A3835; color: #FBFAF7; }
+[data-look="minimal"] .btn.good, [data-look="minimal"] .status.done, [data-look="minimal"] .letter.ok { color: #FBFAF7; }
+[data-look="minimal"] .chip[aria-pressed="true"], [data-look="minimal"] .toggle[aria-pressed="true"] { background: #3A3835; border-color: #3A3835; color: #FBFAF7; }
+[data-look="minimal"] .seg { background: #E9E6E0; }
+[data-look="minimal"] .seg button[aria-pressed="true"] { background: #FBFAF7; color: #3A3835; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+[data-look="minimal"] .paper { background: var(--paper); box-shadow: inset 0 0 0 1px var(--paper-edge); }
+[data-look="minimal"] .bar { background: #E6E3DC; }
+[data-look="minimal"] .bar i { background: #3A3835; }
+[data-look="minimal"] .nav { background: var(--surface); border-top-color: var(--line); }
+[data-look="minimal"] .nav button[aria-current="page"] { color: #3A3835; }
+[data-look="minimal"] .piece-kb, [data-look="minimal"] .kb-host { background: #EFECE6; }
+[data-look="minimal"] .kl { color: #8C877F; }
+[data-look="minimal"] .toast { background: #3A3835; color: #FBFAF7; }
+[data-look="minimal"] .sheet { box-shadow: 0 -10px 30px rgba(0,0,0,.12); }
+[data-look="minimal"] .sheet-veil { background: rgba(0,0,0,.28); }
+[data-look="minimal"] .tour-hole { box-shadow: 0 0 0 9999px rgba(0,0,0,.45); outline-color: #3A3835; }
+[data-look="minimal"] .tour-card { border-color: #3A3835; box-shadow: 0 16px 40px rgba(0,0,0,.18); }
+[data-look="minimal"] .tour-step { color: var(--muted); }
+[data-look="minimal"] .pa-summary span { color: #3A3835; border-color: #D6D2CA; background: #EFECE6; }
+[data-look="minimal"] .chord-chip { background: #EFECE6; }
+[data-look="minimal"] .about-piece h3 { color: var(--muted); }
+[data-look="minimal"] .mk-dot { fill: #3A3835; }
+[data-look="minimal"] .mk-f { fill: #FBFAF7; }
+[data-look="minimal"] .icon-btn.has-dot::after { background: #3D6FC9; }
+[data-look="minimal"] .circle .c-hub { fill: #EFECE6; }
