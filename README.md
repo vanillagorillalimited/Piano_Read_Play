@@ -40,7 +40,7 @@ The first build downloads Capacitor and RevenueCat through Swift Package Manager
 1. Wait for Gradle to finish.
 2. Plug in a phone with USB debugging turned on and press Run.
 
-The app ID is `com.cramberry.readplay`, set in `capacitor.config.json`. Change it there before you create the app in App Store Connect or Google Play if you want a different one. Then run `npx cap sync` again. On iOS, also update the Bundle Identifier in Xcode.
+The app ID is `org.vanillagorilla.readplay` (Vanilla Gorilla Limited). Use exactly this when you create the app in App Store Connect and Google Play, because it can't be changed once the app is listed.
 
 ## 2. Fill in the settings
 
@@ -73,7 +73,7 @@ Premium adds:
 
 **App Store Connect** (appstoreconnect.apple.com)
 1. Agreements, Tax and Banking: sign the Paid Applications agreement and add bank and tax details. Nothing can be sold until this is done.
-2. Create the app with the bundle ID above.
+2. Create the app with the bundle ID above, under your Vanilla Gorilla Limited developer account.
 3. Under Subscriptions, create a group called Premium with two subscriptions, for example `rp_monthly` and `rp_annual`. Set the prices, and add an introductory offer (such as a free week) to the yearly one if you want a trial.
 4. Users and Access → Integrations → In-App Purchase: create a key for RevenueCat.
 
